@@ -29,13 +29,31 @@ chmod +x kops-linux-amd64
 mv kops-linux-amd64 /usr/local/bin/kops
 ```
 
-### Create a route53 domain for your cluster
+### Create a route53 domain for your cluster:
 
 Example: **demo.magestore.com**
 
-Create via AWS CLI: ```aws route53 create-hosted-zone --name demo.magestore.com --caller-reference 1```
+Using AWS CLI: ```aws route53 create-hosted-zone --name demo.magestore.com --caller-reference 1```
 
 After that check ```dig NS demo.magestore.com``` you should see the 4 NS records that Route53 assigned your hosted zone.
+
+Note that, if haven't been install aws cli install it first, then run ```aws configure``` to login with AWS Access ID and Key
+
+### Create an S3 bucket to store your clusters state:
+
+Using AWS CLI: ```aws s3 mb s3://clusters.demo.magestore.com```
+
+### Build cluster configuration:
+
+Using AWS CLI: ```kops create cluster --zones=us-east-1f useast1.demo.magestore.com```
+
+This step will create configuration and store to aws s3
+
+### Create the cluster in AWS:
+
+Using AWS CLI: ```kops update cluster useast1.demo.magestore.com --yes```
+
+This step will create EC2 Instance, Auto Scaling Group.
 
 
 # 2. Usage
