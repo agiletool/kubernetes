@@ -49,7 +49,7 @@ Using AWS CLI: ```kops create cluster --zones=us-east-1f useast1.demo.magestore.
 
 This step will create configuration and store to aws s3.
 
-Note: Guid for create cluster configuration from [template](https://github.com/kubernetes/kops/blob/master/docs/cluster_template.md)
+Note: Guide for create cluster configuration from [template](https://github.com/kubernetes/kops/blob/master/docs/cluster_template.md)
 
 ### Create the cluster in AWS:
 
