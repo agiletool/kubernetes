@@ -47,7 +47,9 @@ Using AWS CLI: ```aws s3 mb s3://clusters.demo.magestore.com```
 
 Using AWS CLI: ```kops create cluster --zones=us-east-1f useast1.demo.magestore.com```
 
-This step will create configuration and store to aws s3
+This step will create configuration and store to aws s3.
+
+Note: Guid for create cluster configuration from [template](https://github.com/kubernetes/kops/blob/master/docs/cluster_template.md)
 
 ### Create the cluster in AWS:
 
