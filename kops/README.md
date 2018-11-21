@@ -59,9 +59,8 @@ This step will create EC2 Instance, Auto Scaling Group.
 
 
 # 2. Usage
----
 
-### Guide for Kops:
----
+## Kops:
 
-Kops docs: https://github.com/kubernetes/kops/tree/master/docs
+* Docs: https://github.com/kubernetes/kops/tree/master/docs
+
