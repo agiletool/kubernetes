@@ -15,7 +15,7 @@ kubectl expose pod <pod_name> --type=NodePort --port=80
 
 # Other guide
 
-## Creating an EBS volume
+## Creating an EBS volume [Docs](https://kubernetes.io/docs/concepts/storage/volumes/)
 Before you can use an EBS volume with a Pod, you need to create it.
 
 aws ec2 create-volume --availability-zone=eu-west-1a --size=10 --volume-type=gp2
