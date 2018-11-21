@@ -102,7 +102,6 @@ Suggestions:
  * read about installing addons at: https://github.com/kubernetes/kops/blob/master/docs/addons.md.
 ```
 
-
 # 2. Guides & Docs
 
 ## Kops:
@@ -110,4 +109,7 @@ Suggestions:
 * Docs: https://github.com/kubernetes/kops/tree/master/docs
 
 # 3. Operations
+
+## Deploy app
+
 
