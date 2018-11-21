@@ -57,9 +57,11 @@ Using AWS CLI: ```kops update cluster useast1.demo.magestore.com --yes```
 This step will create EC2 Instance, Auto Scaling Group.
 
 
-# 2. Usage
+# 2. Guides & Docs
 
 ## Kops:
 
 * Docs: https://github.com/kubernetes/kops/tree/master/docs
+
+# 3. Operations
 
