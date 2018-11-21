@@ -1,9 +1,8 @@
 # What it is?
----
 
 
 # 1. Install:
----
+
 
 ## Kops for AWS:
 Guide: https://kubernetes.io/docs/setup/custom-cloud/kops/
