@@ -42,9 +42,11 @@ Note that, if haven't been install aws cli install it first, then run ```aws con
 
 Using AWS CLI: ```aws s3 mb s3://clusters.demo.magestore.com```
 
-### Build cluster configuration:
+```
+export KOPS_STATE_STORE="s3://clusters.demo.magestore.com"
+```
 
-Using AWS CLI:
+### Build cluster configuration:
 
 ```kops create cluster --zones=us-east-1f useast1.demo.magestore.com```
 
@@ -60,13 +62,30 @@ kops create cluster useast1.demo.magestore.com \
   --yes
 ```
 
+Note: [edit guide](https://github.com/kubernetes/kops/blob/master/docs/cli/kops_edit_cluster.md) if needed
+Use ```kops edit instancegroup nodes --name useast1.demo.magestore.com``` to edit node-count, etc
+
+Create SSH access key if not created:
+
+```
+ssh-keygen -t rsa -b 4096 -C "kubernetes-access"
+```
+
+Or we can edit file to add existed SSH Key to ```~/.ssh/id_rsa.pub```
+
+Add SSH Key:
+
+```
+kops create secret --name useast1.demo.magestore.com sshpublickey admin -i ~/.ssh/id_rsa.pub
+```
+
 This step will create configuration and store to aws s3.
 
 Note: Guide for create cluster configuration from [template](https://github.com/kubernetes/kops/blob/master/docs/cluster_template.md)
 
 ### Create the cluster in AWS:
 
-Using AWS CLI: ```kops update cluster useast1.demo.magestore.com --yes```
+```kops update cluster useast1.demo.magestore.com --yes```
 
 This step will create EC2 Instance, Auto Scaling Group.
 
