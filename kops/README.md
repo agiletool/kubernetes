@@ -19,7 +19,7 @@ sudo apt-get update
 sudo apt-get install -y kubectl
 ```
 
-### Install kops:
+### Install kops on your computer:
 
 On Linux:
 ```
