@@ -89,6 +89,19 @@ Note: Guide for create cluster configuration from [template](https://github.com/
 
 This step will create EC2 Instance, Auto Scaling Group.
 
+Result:
+
+```
+Cluster is starting.  It should be ready in a few minutes.
+
+Suggestions:
+ * validate cluster: kops validate cluster
+ * list nodes: kubectl get nodes --show-labels
+ * ssh to the master: ssh -i ~/.ssh/id_rsa admin@api.useast1.demo.magestore.com
+ * the admin user is specific to Debian. If not using Debian please use the appropriate user based on your OS.
+ * read about installing addons at: https://github.com/kubernetes/kops/blob/master/docs/addons.md.
+```
+
 
 # 2. Guides & Docs
 
