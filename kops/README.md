@@ -44,7 +44,21 @@ Using AWS CLI: ```aws s3 mb s3://clusters.demo.magestore.com```
 
 ### Build cluster configuration:
 
-Using AWS CLI: ```kops create cluster --zones=us-east-1f useast1.demo.magestore.com```
+Using AWS CLI:
+
+```kops create cluster --zones=us-east-1f useast1.demo.magestore.com```
+
+Create cluster with more than options:
+
+```
+kops create cluster useast1.demo.magestore.com \
+  --node-count 3 \
+  --zones us-east-1f \
+  --node-size m4.large \
+  --master-size m4.large \
+  --master-zones us-east-1f \
+  --yes
+```
 
 This step will create configuration and store to aws s3.
 
