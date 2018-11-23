@@ -54,11 +54,13 @@ Create cluster with more than options:
 
 ```
 kops create cluster useast1.demo.magestore.com \
-  --node-count 3 \
+  --node-count 1 \
   --zones us-east-1f \
   --node-size m4.large \
   --master-size m4.large \
   --master-zones us-east-1f \
+  --master-volume-size 20 \
+  --node-volume-size 30 \
   --yes
 ```
 
