@@ -42,8 +42,9 @@ spec:
         - name: demo-data
           mountPath: /etc/nginx/certs
           subPath: ssl_certs
-        - mountPath: /var/run/docker.sock
+        - mountPath: /tmp/docker.sock
           name: docker-sock
+          readOnly: true
         env:
         - name: DEFAULT_HOST
           value: "demo-pos.magestore.com"
