@@ -50,13 +50,36 @@ spec:
           value: "demo-pos.magestore.com"
       volumes:
       - name: demo-data
-        # This AWS EBS volume must already exist.
-        awsElasticBlockStore:
-          volumeID: vol-072ef3cefcb87261f
-          fsType: ext4
+        persistentVolumeClaim:
+          claimName: demo-data
       - name: docker-sock
         hostPath:
           # location on host
           path: /var/run/docker.sock
           # this field is optional
           type: File
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: standard
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  type: gp2
+  iopsPerGB: "10"
+  fsType: ext4
+reclaimPolicy: Retain
+volumeBindingMode: Immediate
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: demo-data
+spec:
+  capacity:
+    storage: 20Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: standard
