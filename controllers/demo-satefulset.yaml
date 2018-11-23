@@ -81,5 +81,5 @@ spec:
   volumeMode: Block
   resources:
     requests:
-      storage: 10Gi
+      storage: 20Gi
   storageClassName: standard
