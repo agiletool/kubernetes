@@ -45,6 +45,9 @@ spec:
           subPath: ssl_certs
         - mountPath: /var/run/docker.sock
           name: docker-sock
+        env:
+        - name: DEFAULT_HOST
+          value: "demo-pos.magestore.com"
       volumes:
       - name: demo-data
         # This AWS EBS volume must already exist.
