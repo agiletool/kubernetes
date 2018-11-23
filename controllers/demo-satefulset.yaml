@@ -76,10 +76,11 @@ kind: PersistentVolumeClaim
 metadata:
   name: demo-data
 spec:
-  capacity:
-    storage: 20Gi
-  volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
+  volumeMode: Block
+  resources:
+    requests:
+      storage: 10Gi
   persistentVolumeReclaimPolicy: Retain
   storageClassName: standard
