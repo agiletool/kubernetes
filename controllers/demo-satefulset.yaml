@@ -6,7 +6,6 @@ metadata:
     app: demo
 spec:
   type: LoadBalancer
-  clusterIP: 'None'
   ports:
   - port: 80
     name: http
