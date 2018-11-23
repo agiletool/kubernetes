@@ -107,6 +107,7 @@ Suggestions:
 ## Kops:
 
 * Docs: https://github.com/kubernetes/kops/tree/master/docs
+
 Clean: ```kops delete cluster useast1.demo.magestore.com --yes```
 
 # 3. Operations
