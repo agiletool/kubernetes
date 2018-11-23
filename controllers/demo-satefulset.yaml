@@ -50,7 +50,7 @@ spec:
           value: "demo-pos.magestore.com"
       volumes:
       - name: demo-data
-        persistentVolumeClaim:
+        persistentVolume:
           claimName: demo-data
       - name: docker-sock
         hostPath:
