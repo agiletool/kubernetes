@@ -13,5 +13,5 @@ kpos ' -- Install & create EC2 clusters to run kubernetes with auto scaling and 
      |
      |
     \|/
-pod  ' -- Run all containers created as servers (web services, api, etc...)
+controllers(pod, statefulset)  ' -- Run all containers created as servers (web services, api, etc...)
 ```
