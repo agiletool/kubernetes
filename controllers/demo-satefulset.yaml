@@ -51,7 +51,7 @@ spec:
       - name: demo-data
         # This AWS EBS volume must already exist.
         awsElasticBlockStore:
-          volumeID: vol-06ea323ca83bba040
+          volumeID: vol-072ef3cefcb87261f
           fsType: ext4
       - name: docker-sock
         hostPath:
