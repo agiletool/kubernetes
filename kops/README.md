@@ -60,7 +60,7 @@ kops create cluster useast1.demo.magestore.com \
   --master-size m4.large \
   --master-zones us-east-1f \
   --master-volume-size 20 \
-  --node-volume-size 30 \
+  --node-volume-size 10 \
   --yes
 ```
 
