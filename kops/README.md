@@ -54,6 +54,7 @@ Create cluster with more than options:
 
 ```
 kops create cluster useast1.demo.magestore.com \
+  --state "s3://clusters.demo.magestore.com" \
   --node-count 1 \
   --zones us-east-1f \
   --node-size m4.large \
