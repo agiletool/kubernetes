@@ -54,6 +54,7 @@ spec:
           value: "demo-pos.magestore.com"
       - name: magento-c226-mvp
         image: magestore/magento:2.2.6
+        imagePullPolicy: Always
         volumeMounts:
         - name: demo-data
           mountPath: /var/www/html
