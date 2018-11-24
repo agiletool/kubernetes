@@ -30,6 +30,10 @@ spec:
         app: demo # has to match .spec.selector.matchLabels
     spec:
       terminationGracePeriodSeconds: 10
+      hostAliases:
+      - ip: "172.31.106.149"
+        hostnames:
+        - "db"
       containers:
       - name: nginx-proxy
         image: jwilder/nginx-proxy
@@ -48,6 +52,24 @@ spec:
         env:
         - name: DEFAULT_HOST
           value: "demo-pos.magestore.com"
+      - name: magento-c226-mvp
+        image: magestore/magento:2.2.6
+        ports:
+        - containerPort: 80
+          name: http
+        - containerPort: 443
+          name: https
+        volumeMounts:
+        - name: demo-data
+          mountPath: /var/www/html
+          subPath: magento_c226_mvp
+        env:
+        - name: CERT_NAME
+          value: comodo
+        - name: HTTPS_METHOD
+          value: noredirect
+        - name: VIRTUAL_HOST
+          value: demo-pos.magestore.com
       volumes:
       - name: demo-data
         persistentVolumeClaim:
