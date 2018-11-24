@@ -24,7 +24,7 @@ spec:
       app: demo # has to match .spec.template.metadata.labels
   serviceName: "demo"
   replicas: 4 # by default is 1
-  updateStrategy: RollingUpdate
+  updateStrategy: "RollingUpdate"
   template:
     metadata:
       labels:
