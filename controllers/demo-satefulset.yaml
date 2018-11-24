@@ -24,6 +24,8 @@ spec:
       app: demo # has to match .spec.template.metadata.labels
   serviceName: "demo"
   replicas: 4 # by default is 1
+  updateStrategy:
+  - type: RollingUpdate
   template:
     metadata:
       labels:
@@ -34,7 +36,6 @@ spec:
       - ip: "172.31.106.149"
         hostnames:
         - "db"
-      restartPolicy: OnFailure
       containers:
       - name: nginx-proxy
         image: jwilder/nginx-proxy
