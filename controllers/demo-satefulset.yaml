@@ -57,11 +57,6 @@ spec:
       - name: magento-c226-mvp
         image: httpd
         imagePullPolicy: Always
-        ports:
-        - containerPort: 80
-          name: http
-        - containerPort: 443
-          name: https
         volumeMounts:
         - name: demo-data
           mountPath: /var/www/html
