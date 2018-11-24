@@ -54,11 +54,6 @@ spec:
           value: "demo-pos.magestore.com"
       - name: magento-c226-mvp
         image: magestore/magento:2.2.6
-        ports:
-        - containerPort: 80
-          name: http
-        - containerPort: 443
-          name: https
         volumeMounts:
         - name: demo-data
           mountPath: /var/www/html
