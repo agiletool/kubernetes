@@ -55,7 +55,7 @@ spec:
         - name: DEFAULT_HOST
           value: "demo-pos.magestore.com"
       - name: magento-c226-mvp
-        image: jwilder/nginx-proxy
+        image: magestore/magento2:php7.1
         imagePullPolicy: Always
         ports:
         - containerPort: 80
