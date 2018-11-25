@@ -32,6 +32,7 @@ spec:
         app: demo # has to match .spec.selector.matchLabels
     spec:
       terminationGracePeriodSeconds: 10
+      shareProcessNamespace: false
       hostAliases:
       - ip: "172.31.106.149"
         hostnames:
