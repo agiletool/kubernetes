@@ -102,6 +102,7 @@ spec:
       - ip: "172.31.106.149"
         hostnames:
         - "db"
+      containers:
       - name: c226-mvp
         image: magestore/magento:2.2.6
         imagePullPolicy: Always
