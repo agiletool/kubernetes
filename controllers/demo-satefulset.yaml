@@ -72,7 +72,6 @@ metadata:
 spec:
   selector:
     app: demo-pos-mvp
-  clusterIP: None
   type: NodePort
   ports:
   - name: http
