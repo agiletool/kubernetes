@@ -1,28 +1,89 @@
-apiVersion: v1
 kind: Service
+apiVersion: v1
 metadata:
-  name: demo
+  name: ingress-nginx
+  namespace: ingress-nginx
   labels:
-    app: demo
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+  annotations:
+    # Enable PROXY protocol
+    service.beta.kubernetes.io/aws-load-balancer-proxy-protocol: "*"
+    # Ensure the ELB idle timeout is less than nginx keep-alive timeout. By default,
+    # NGINX keep-alive is set to 75s. If using WebSockets, the value will need to be
+    # increased to '3600' to avoid any potential issues.
+    service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: "60"
 spec:
   type: LoadBalancer
-  ports:
-  - port: 80
-    name: http
-  - port: 443
-    name: https
   selector:
-    app: demo
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+    - name: https
+      port: 443
+      targetPort: https
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: nginx-configuration
+  namespace: ingress-nginx
+  labels:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+data:
+  use-proxy-protocol: "true"
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-nginx
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  tls:
+  - hosts:
+    - demo.magestore.com
+    secretName: comodo-secret
+  rules:
+  - host: demo.magestore.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: demo-pos-mvp
+          servicePort: 80
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: demo-pos-mvp
+spec:
+  selector:
+    app: demo-pos-mvp
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 80
+  - name: https
+    protocol: TCP
+    port: 443
+    targetPort: 443
+  type: NodePort
 ---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: demo
+  name: demo-pos-mvp
 spec:
   selector:
     matchLabels:
-      app: demo # has to match .spec.template.metadata.labels
-  serviceName: "demo"
+      app: demo-pos-mvp # has to match .spec.template.metadata.labels
+  serviceName: "demo-pos-mvp"
   replicas: 4 # by default is 1
   updateStrategy:
     type: "RollingUpdate"
@@ -32,43 +93,17 @@ spec:
         app: demo # has to match .spec.selector.matchLabels
     spec:
       terminationGracePeriodSeconds: 10
-      shareProcessNamespace: false
       hostAliases:
       - ip: "172.31.106.149"
         hostnames:
         - "db"
-      containers:
-      - name: nginx-proxy
-        image: jwilder/nginx-proxy
-        ports:
-        - containerPort: 80
-          name: http
-        - containerPort: 443
-          name: https
-        volumeMounts:
-        - name: demo-data
-          mountPath: /etc/nginx/certs
-          subPath: ssl_certs
-        - mountPath: /tmp/docker.sock
-          name: docker-sock
-          readOnly: true
-        env:
-        - name: DEFAULT_HOST
-          value: "demo-pos.magestore.com"
-      - name: magento-c226-mvp
-        image: httpd:2.4
+      - name: c226-mvp
+        image: magestore/magento:2.2.6
         imagePullPolicy: Always
         volumeMounts:
         - name: demo-data
           mountPath: /var/www/html
           subPath: magento_c226_mvp
-        env:
-        - name: CERT_NAME
-          value: comodo
-        - name: HTTPS_METHOD
-          value: noredirect
-        - name: VIRTUAL_HOST
-          value: demo-pos.magestore.com
       volumes:
       - name: demo-data
         persistentVolumeClaim:
