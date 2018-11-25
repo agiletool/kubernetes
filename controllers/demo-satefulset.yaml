@@ -95,7 +95,7 @@ spec:
   template:
     metadata:
       labels:
-        app: demo # has to match .spec.selector.matchLabels
+        app: demo-pos-mvp # has to match .spec.selector.matchLabels
     spec:
       terminationGracePeriodSeconds: 10
       hostAliases:
