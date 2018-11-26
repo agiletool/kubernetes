@@ -11,6 +11,4 @@ RUN ln -sf /dev/stdout /var/log/apache2/error.log ; \
 COPY . /var/www/html
 RUN chown -R ubuntu:ubuntu /var/www/html
 
-CMD ["/bin/bash"]
-
 ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
