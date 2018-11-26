@@ -1,0 +1,10 @@
+FROM alpine
+
+MAINTAINER robert@trueplus.vn
+
+RUN \
+  adduser -D -h /home/ubuntu -s /bin/sh ubuntu && \
+  mkdir -p /var/www/html && \
+  chown -R ubuntu:ubuntu /var/www/html
+
+CMD ["/bin/sh"]
