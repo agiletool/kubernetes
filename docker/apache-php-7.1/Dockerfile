@@ -20,6 +20,7 @@ RUN \
     rm -rf /usr/src/tmp/ && \
     mkdir /tmp/composer/ && \
     cd /tmp/composer && \
+    apt-get install curl && \
     curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer && \
     chmod a+x /usr/local/bin/composer && \
