@@ -76,14 +76,12 @@ spec:
           mountPath: /var/www/html
           subPath: magento_c226_mvp
       # Prepare data when first pod is creating
-      initContainers:
       - name: install
         image: magestore/magento:2.2.6
-        command:
-        - echo "see root:" && ls -l /
-        - echo "html" && ls -l /var/www/html/
-        - echo "demo-data" && ls -l /demo-data/
-        - cp -rpf /var/www/html/* /demo-data/magento_c226_mvp/
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "cp -rpf /var/www/html/* /demo-data/magento_c226_mvp/"]
         volumeMounts:
         - name: demo-data
           mountPath: /demo-data
