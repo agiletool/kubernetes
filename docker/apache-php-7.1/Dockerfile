@@ -17,6 +17,8 @@ RUN \
     sed -i -e 's/memory_limit = 128M/memory_limit = 512M/g' /etc/php/7.1/apache2/php.ini && \
     sed -i -e 's/DirectoryIndex index.html index.php index.cgi index.pl index.xhtml index.htm/DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm/g' /etc/apache2/mods-available/dir.conf && \
     sed -i -r 's/MaxConnectionsPerChild\s+0/MaxConnectionsPerChild   ${MAXCONNECTIONSPERCHILD}/' /etc/apache2/mods-available/* && \
+    sed -i -e 's/APACHE_RUN_USER=www-data/APACHE_RUN_USER=ubuntu/g' /etc/apache2/envvars && \
+    sed -i -e 's/APACHE_RUN_GROUP=www-data/APACHE_RUN_GROUP=ubuntu/g' /etc/apache2/envvars && \
     rm -rf /usr/src/tmp/ && \
     mkdir /tmp/composer/ && \
     cd /tmp/composer && \
