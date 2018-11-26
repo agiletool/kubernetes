@@ -1,9 +1,9 @@
-FROM alpine
+FROM ubuntu:16.04
 
 MAINTAINER robert@trueplus.vn
 
 RUN \
-  apt-get update && \
+    apt-get update && \
     apt-get install -y software-properties-common python-software-properties && \
     add-apt-repository -y -u ppa:ondrej/php && \
     apt-get update && \
@@ -27,7 +27,6 @@ RUN \
     apt-get remove -y python-software-properties software-properties-common && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/* && \
-    apk update && apk upgrade && apk add bash && \
     useradd -d /home/ubuntu -s /bin/bash -m ubuntu && \
     chmod -R ubuntu:ubuntu /var/www && \
     chmod 777 -R /var/www
