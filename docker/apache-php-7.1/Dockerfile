@@ -3,6 +3,7 @@ FROM ubuntu:16.04
 MAINTAINER robert@trueplus.vn
 
 RUN \
+    export LANG=C.UTF-8 && \
     apt-get update && \
     apt-get install -y software-properties-common python-software-properties && \
     add-apt-repository -y -u ppa:ondrej/php && \
