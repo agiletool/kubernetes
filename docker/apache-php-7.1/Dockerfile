@@ -27,6 +27,7 @@ RUN \
     apt-get remove -y python-software-properties software-properties-common && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/* && \
+    apk update && apk upgrade && apk add bash && \
     useradd -d /home/ubuntu -s /bin/bash -m ubuntu && \
     chmod -R ubuntu:ubuntu /var/www && \
     chmod 777 -R /var/www
