@@ -19,6 +19,7 @@ RUN \
     sed -i -r 's/MaxConnectionsPerChild\s+0/MaxConnectionsPerChild   ${MAXCONNECTIONSPERCHILD}/' /etc/apache2/mods-available/* && \
     sed -i -e 's/APACHE_RUN_USER=www-data/APACHE_RUN_USER=ubuntu/g' /etc/apache2/envvars && \
     sed -i -e 's/APACHE_RUN_GROUP=www-data/APACHE_RUN_GROUP=ubuntu/g' /etc/apache2/envvars && \
+    echo "ServerName localhost" >> /etc/apache2/apache2.conf && \
     rm -rf /usr/src/tmp/ && \
     mkdir /tmp/composer/ && \
     cd /tmp/composer && \
