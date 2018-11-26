@@ -80,10 +80,12 @@ spec:
       - name: install
         image: magestore/magento:2.2.6
         command:
-        - cp -rpf /var/www/html/* /demo-data/magento_c226_mvp/
+        - echo "/var/www/html/" && ls -l /var/www/html/
+        - echo "/magento_c226_mvp/" && ls -l /magento_c226_mvp/
+        - cp -rpf /var/www/html/* /magento_c226_mvp/
         volumeMounts:
         - name: demo-data
-          mountPath: "/demo-data"
+          mountPath: /
       volumes:
       - name: demo-data
         persistentVolumeClaim:
