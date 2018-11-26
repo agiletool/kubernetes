@@ -1,2 +1,4 @@
 # Ignore Dockerfile
 Dockerfile
+.git/
+.github/
