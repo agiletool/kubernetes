@@ -81,10 +81,7 @@ spec:
         lifecycle:
           postStart:
             exec:
-              command: ["/bin/sh", "-c", "cp -rpf /var/www/html/* /demo-data/magento_c226_mvp/"]
-        volumeMounts:
-        - name: demo-data
-          mountPath: /demo-data
+              command: ["/bin/sh", "-c", "chown -R ubuntu:ubuntu /var/www/html"]
       volumes:
       - name: demo-data
         persistentVolumeClaim:
