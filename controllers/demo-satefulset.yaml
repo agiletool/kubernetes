@@ -81,11 +81,11 @@ spec:
         image: magestore/magento:2.2.6
         command:
         - echo "/var/www/html/" && ls -l /var/www/html/
-        - echo "/magento_c226_mvp/" && ls -l /magento_c226_mvp/
-        - cp -rpf /var/www/html/* /magento_c226_mvp/
+        - echo "/demo-data/" && ls -l /demo-data/
+        - cp -rpf /var/www/html/* /demo-data/magento_c226_mvp/
         volumeMounts:
         - name: demo-data
-          mountPath: /
+          mountPath: /demo-data
       volumes:
       - name: demo-data
         persistentVolumeClaim:
