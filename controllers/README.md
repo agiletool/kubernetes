@@ -4,7 +4,7 @@ Usage:
 * Run mandatory.yaml before demo-statefulset.yaml
 
 
-Note:
+***Note:***
 
 Create EBS volume:
 
