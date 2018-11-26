@@ -73,18 +73,21 @@ spec:
           name: https
         volumeMounts:
         - name: demo-data
-          mountPath: /var/www/html_
+          mountPath: /var/www/html
           subPath: magento_c226_mvp
+      # Prepare data when first pod is creating
+      initContainers:
+      - name: install
+        image: magestore/magento:2.2.6
+        command:
+        - cp -rpf /var/www/html/* /demo-data/magento_c226_mvp/
+        volumeMounts:
+        - name: demo-data
+          mountPath: "/demo-data"
       volumes:
       - name: demo-data
         persistentVolumeClaim:
           claimName: demo-data
-      - name: docker-sock
-        hostPath:
-          # location on host
-          path: /var/run/docker.sock
-          # this field is optional
-          type: File
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
