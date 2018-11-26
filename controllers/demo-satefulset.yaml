@@ -64,7 +64,7 @@ spec:
         - "db"
       containers:
       - name: c226-mvp
-        image: magestore/magento:2.2.6
+        image: magestore/apache-php:7.1
         imagePullPolicy: Always
         ports:
         - containerPort: 80
