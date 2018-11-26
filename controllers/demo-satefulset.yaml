@@ -57,6 +57,7 @@ spec:
         app: demo-pos-mvp # has to match .spec.selector.matchLabels
     spec:
       terminationGracePeriodSeconds: 10
+      restartPolicy: Always
       hostAliases:
       - ip: "172.31.106.149"
         hostnames:
