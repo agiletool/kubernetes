@@ -73,17 +73,13 @@ spec:
               command: ["/bin/sh", "-c", "chown -R ubuntu:ubuntu /var/www/html"]
         ports:
         - containerPort: 8080
-          name: http
         - containerPort: 80443
-          name: https
       - name: c226-mvp
         image: magestore/apache-php:7.1
         imagePullPolicy: Always
         ports:
         - containerPort: 80
-          name: http
         - containerPort: 443
-          name: https
         volumeMounts:
         - name: demo-data
           mountPath: /var/www/html
