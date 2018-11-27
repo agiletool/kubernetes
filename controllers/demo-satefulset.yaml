@@ -10,7 +10,7 @@ spec:
     - demo-pos.magestore.com
     secretName: comodo-secret
   rules:
-  - host: demo.magestore.com
+  - host: demo-pos.magestore.com
     http:
       paths:
       - path: /
