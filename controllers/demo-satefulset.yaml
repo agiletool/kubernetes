@@ -5,10 +5,10 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: "nginx"
 spec:
-  #tls:
-  #- hosts:
-  #  - demo.magestore.com
-  #  secretName: comodo-secret
+  tls:
+  - hosts:
+    - demo-pos.magestore.com
+    secretName: comodo-secret
   rules:
   - host: demo.magestore.com
     http:
