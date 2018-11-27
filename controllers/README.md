@@ -1,7 +1,7 @@
 Usage:
 ---
 
-* Run mandatory.yaml before demo-statefulset.yaml
+* Run ```mandatory.yaml``` before ```demo-statefulset.yaml```
 
 
 ***Note:***
@@ -13,3 +13,9 @@ aws ec2 create-volume --size 10 --region us-east-1 --availability-zone us-east-1
 ```
 
 With ```useast1.demo.magestore.com``` is cluster name
+
+Create TLS:
+
+```
+kubectl create secret tls custom-tls-cert --key /path/to/tls.key --cert /path/to/tls.crt
+```
