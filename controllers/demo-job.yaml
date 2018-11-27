@@ -5,7 +5,6 @@ kind: Job
 metadata:
   name: init-magento
 spec:
-  TTLAfterFinished: 100
   template:
     metadata:
       name: init-magento
