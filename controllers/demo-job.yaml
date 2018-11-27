@@ -4,6 +4,7 @@ kind: Job
 metadata:
   name: init-magento-c226
 spec:
+  ttlSecondsAfterFinished: 3600
   template:
     spec:
       containers:
