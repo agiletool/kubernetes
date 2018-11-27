@@ -1,0 +1,21 @@
+# create a job init magento
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: init-magento-c226
+spec:
+  template:
+    spec:
+      containers:
+      - name: init-magento-c226
+        image: magestore/magento:2.2.6
+        command: ["cp",  "-rpf", "/var/www/html/*", "/demo-data/magento_c226_mvp/"]
+        volumeMounts:
+          - name: demo-data
+            mountPath: /demo-data
+      restartPolicy: Never
+      volumes:
+      - name: demo-data
+        persistentVolumeClaim:
+          claimName: demo-data
+  backoffLimit: 4
