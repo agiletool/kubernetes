@@ -6,7 +6,7 @@ Usage:
 
 ***Note:***
 
-Create EBS volume:
+* Create EBS volume:
 
 ```
 aws ec2 create-volume --size 10 --region us-east-1 --availability-zone us-east-1f --volume-type gp2 --tag-specifications 'ResourceType=volume,Tags=[{Key=KubernetesCluster,Value=useast1.demo.magestore.com}]'
@@ -14,7 +14,7 @@ aws ec2 create-volume --size 10 --region us-east-1 --availability-zone us-east-1
 
 With ```useast1.demo.magestore.com``` is cluster name
 
-Create TLS:
+* Create TLS:
 
 ```
 kubectl create secret tls custom-tls-cert --key /path/to/tls.key --cert /path/to/tls.crt
