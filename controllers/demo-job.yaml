@@ -9,6 +9,7 @@ spec:
       containers:
       - name: init-magento-c226
         image: magestore/magento:2.2.6
+        imagePullPolicy: Always
         command: ["cp",  "-rpf", "/var/www/html/*", "/demo-data/magento_c226_mvp/"]
         volumeMounts:
           - name: demo-data
