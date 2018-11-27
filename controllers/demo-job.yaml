@@ -11,7 +11,7 @@ spec:
         image: magestore/apache-php:7.1
         imagePullPolicy: Always
         #command: ["cp",  "-rpf", "/var/www/html/*", "/demo-data/magento_c226_mvp/"]
-        command: ["lsb_release",  "-a"]
+        command: ["echo",  "$PATH"]
         volumeMounts:
           - name: demo-data
             mountPath: /demo-data
