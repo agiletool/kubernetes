@@ -1,23 +1,26 @@
 # create a job init magento
+# The job copy base magento data to /var/www/html
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: init-magento-c226
+  name: init-magento
 spec:
+  TTLAfterFinished: 100
   template:
+    metadata:
+      name: init-magento
     spec:
       containers:
-      - name: init-magento-c226
-        image: magestore/apache-php:7.1
-        imagePullPolicy: Always
-        #command: ["cp",  "-rpf", "/var/www/html/*", "/demo-data/magento_c226_mvp/"]
-        command: ["echo",  "$PATH"]
+      - name: magento
+        image: magestore/magento:2.2.6
+        command: ["cp"]
+        args: ["-rpf", "/var/www/html/.", "/data/"]
         volumeMounts:
-          - name: demo-data
-            mountPath: /demo-data
-      restartPolicy: Never
+        - name: demo-data
+          mountPath: "/data"
+          subPath: magento_c226_mvp
       volumes:
       - name: demo-data
         persistentVolumeClaim:
           claimName: demo-data
-  backoffLimit: 4
+      restartPolicy: Never
