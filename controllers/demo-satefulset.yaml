@@ -63,6 +63,13 @@ spec:
         hostnames:
         - "db"
       containers:
+      # Prepare data when first pod is creating
+      - name: magento
+        image: magestore/magento:2.2.6
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "chown -R ubuntu:ubuntu /var/www/html"]
       - name: c226-mvp
         image: magestore/apache-php:7.1
         imagePullPolicy: Always
@@ -75,13 +82,6 @@ spec:
         - name: demo-data
           mountPath: /var/www/html
           subPath: magento_c226_mvp
-      # Prepare data when first pod is creating
-      - name: magento
-        image: magestore/magento:2.2.6
-        lifecycle:
-          postStart:
-            exec:
-              command: ["/bin/sh", "-c", "chown -R ubuntu:ubuntu /var/www/html"]
       volumes:
       - name: demo-data
         persistentVolumeClaim:
