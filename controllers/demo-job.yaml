@@ -8,9 +8,10 @@ spec:
     spec:
       containers:
       - name: init-magento-c226
-        image: magestore/magento:2.2.6
+        image: magestore/apache-php:7.1
         imagePullPolicy: Always
         #command: ["cp",  "-rpf", "/var/www/html/*", "/demo-data/magento_c226_mvp/"]
+        command: ["lsb_release",  "-a"]
         volumeMounts:
           - name: demo-data
             mountPath: /demo-data
@@ -20,4 +21,3 @@ spec:
         persistentVolumeClaim:
           claimName: demo-data
   backoffLimit: 4
-  ttlSecondsAfterFinished: 100
