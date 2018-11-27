@@ -56,7 +56,7 @@ spec:
       labels:
         app: demo-pos-mvp # has to match .spec.selector.matchLabels
     spec:
-      shareProcessNamespace: true
+      #shareProcessNamespace: true
       terminationGracePeriodSeconds: 10
       restartPolicy: Always
       hostAliases:
