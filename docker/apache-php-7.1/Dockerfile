@@ -21,6 +21,13 @@ RUN \
     sed -i -e 's/APACHE_RUN_USER=www-data/APACHE_RUN_USER=ubuntu/g' /etc/apache2/envvars && \
     sed -i -e 's/APACHE_RUN_GROUP=www-data/APACHE_RUN_GROUP=ubuntu/g' /etc/apache2/envvars && \
     echo "ServerName localhost" >> /etc/apache2/apache2.conf && \
+    cat << EOF >> /etc/apache2/apache2.conf && \
+    <Directory /var/www/html>
+        Options -Indexes +FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+    EOF
     a2enmod rewrite && \
     rm -rf /usr/src/tmp/ && \
     mkdir /tmp/composer/ && \
