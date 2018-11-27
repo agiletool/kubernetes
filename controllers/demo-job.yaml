@@ -20,4 +20,4 @@ spec:
         persistentVolumeClaim:
           claimName: demo-data
   backoffLimit: 4
-  ttlSecondsAfterFinished: 3600
+  ttlSecondsAfterFinished: 100
