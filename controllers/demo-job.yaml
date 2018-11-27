@@ -4,7 +4,6 @@ kind: Job
 metadata:
   name: init-magento-c226
 spec:
-  ttlSecondsAfterFinished: 3600
   template:
     spec:
       containers:
@@ -21,3 +20,4 @@ spec:
         persistentVolumeClaim:
           claimName: demo-data
   backoffLimit: 4
+  ttlSecondsAfterFinished: 3600
