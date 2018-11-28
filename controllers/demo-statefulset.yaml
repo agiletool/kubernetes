@@ -22,11 +22,11 @@ spec:
         backend:
           serviceName: demo-pos-mvp
           servicePort: 80
-  - http:
-      paths:
-      - backend:
-          serviceName: demo-pos-mvp
-          servicePort: 80
+  #- http:
+  #    paths:
+  #    - backend:
+  #        serviceName: demo-pos-mvp
+  #        servicePort: 80
 ---
 kind: Service
 apiVersion: v1
