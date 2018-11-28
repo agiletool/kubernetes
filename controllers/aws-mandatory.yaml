@@ -12,7 +12,7 @@ metadata:
     app.kubernetes.io/name: ingress-nginx
     app.kubernetes.io/part-of: ingress-nginx
 data:
-  use-proxy-protocol: "true"
+  use-proxy-protocol: "false"
   #ssl-redirect: "true"
 ---
 apiVersion: extensions/v1beta1
@@ -101,15 +101,18 @@ metadata:
     app.kubernetes.io/part-of: ingress-nginx
   annotations:
     # Enable PROXY protocol
-    service.beta.kubernetes.io/aws-load-balancer-proxy-protocol: "*"
+    #service.beta.kubernetes.io/aws-load-balancer-proxy-protocol: "*"
     # Ensure the ELB idle timeout is less than nginx keep-alive timeout. By default,
     # NGINX keep-alive is set to 75s. If using WebSockets, the value will need to be
     # increased to '3600' to avoid any potential issues.
     service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: "60"
     # For more, see http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/elb-listener-config.html
     # CertARN is an IAM or CM certificate ARN, e.g. arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012
-    #service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-east-1:468236286011:certificate/f81c5b6b-7122-4eec-af7a-fbba363b6661
-    #service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-east-1:468236286011:certificate/f81c5b6b-7122-4eec-af7a-fbba363b6661
+    # the backend instances are HTTP
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "http"
+    # Map port 443
+    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
 spec:
   type: LoadBalancer
   selector:
@@ -118,10 +121,10 @@ spec:
   ports:
     - name: http
       port: 80
-      targetPort: 80
+      targetPort: http
     - name: https
       port: 443
-      targetPort: 443
+      targetPort: http
 
 ---
 apiVersion: v1
