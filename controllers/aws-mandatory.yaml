@@ -13,7 +13,7 @@ metadata:
     app.kubernetes.io/part-of: ingress-nginx
 data:
   use-proxy-protocol: "true"
-  ssl-redirect: "true"
+  #ssl-redirect: "true"
 ---
 apiVersion: v1
 kind: ServiceAccount
