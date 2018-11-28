@@ -8,7 +8,7 @@ metadata:
     #nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     #kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/upstream-hash-by: "$realip_remote_addr"
-    nginx.ingress.kubernetes.io/connection-proxy-header: "keep-alive"
+    #nginx.ingress.kubernetes.io/connection-proxy-header: "keep-alive"
 spec:
   tls:
   - hosts:
