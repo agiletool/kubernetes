@@ -88,4 +88,4 @@ spec:
       volumes:
       - name: demo-data
         persistentVolumeClaim:
-          claimName: demo-data
+          claimName: demo-nfs
