@@ -6,6 +6,10 @@ Usage:
 
 ***Note:***
 
+* Create EFS volume:
+
+https://github.com/kubernetes-incubator/external-storage/tree/master/aws/efs
+
 * Create EBS volume:
 
 ```
