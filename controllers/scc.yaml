@@ -1,0 +1,36 @@
+---
+allowHostDirVolumePlugin: true
+allowHostIPC: false
+allowHostNetwork: false
+allowHostPID: false
+allowHostPorts: false
+allowPrivilegedContainer: false
+allowedCapabilities:
+- DAC_READ_SEARCH
+- SYS_RESOURCE
+apiVersion: v1
+kind: SecurityContextConstraints
+defaultAddCapabilities: null
+fsGroup:
+  type: MustRunAs
+metadata:
+  annotations: null
+  name: nfs-provisioner
+priority: null
+readOnlyRootFilesystem: false
+requiredDropCapabilities:
+- KILL
+- MKNOD
+- SYS_CHROOT
+runAsUser:
+  type: RunAsAny
+seLinuxContext:
+  type: MustRunAs
+supplementalGroups:
+  type: RunAsAny
+volumes:
+- configMap
+- downwardAPI
+- emptyDir
+- persistentVolumeClaim
+- secret
