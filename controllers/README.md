@@ -10,6 +10,8 @@ Usage:
 
 https://github.com/kubernetes-incubator/external-storage/tree/master/aws/efs
 
+https://github.com/kubernetes-incubator/external-storage/tree/master/nfs/deploy/kubernetes
+
 * Create EBS volume:
 
 ```
