@@ -197,7 +197,7 @@ allowedCapabilities:
 - DAC_READ_SEARCH
 - SYS_RESOURCE
 apiVersion: v1
-kind: PodSecurityContext
+#kind: SecurityContextConstraints
 defaultAddCapabilities: null
 fsGroup:
   type: MustRunAs
