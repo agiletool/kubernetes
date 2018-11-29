@@ -196,8 +196,8 @@ allowPrivilegedContainer: false
 allowedCapabilities:
 - DAC_READ_SEARCH
 - SYS_RESOURCE
-apiVersion: v1
-#kind: SecurityContextConstraints
+apiVersion: extensions/v1beta1
+kind: SecurityContextConstraints
 defaultAddCapabilities: null
 fsGroup:
   type: MustRunAs
