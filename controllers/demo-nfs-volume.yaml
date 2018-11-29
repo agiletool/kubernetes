@@ -197,10 +197,10 @@ allowedCapabilities:
 - DAC_READ_SEARCH
 - SYS_RESOURCE
 apiVersion: v1
+kind: PodSecurityContext
 defaultAddCapabilities: null
 fsGroup:
   type: MustRunAs
-kind: SecurityContextConstraints
 metadata:
   annotations: null
   name: nfs-provisioner
