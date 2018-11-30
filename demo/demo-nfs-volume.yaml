@@ -20,6 +20,29 @@ mountOptions:
   - vers=4.1
 allowVolumeExpansion: true
 ---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: ebs-io1
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  type: io1
+  iopsPerGB: "10"
+  fsType: ext4
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: ebs-io1-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 30Gi
+  storageClassName: ebs-io1
+---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -102,9 +125,8 @@ spec:
           hostPath:
             path: /srv
         - name: ebs-volume
-          awsElasticBlockStore:
-            volumeID: vol-0e5666acc2b3ba497
-            fsType: ext4
+          persistentVolumeClaim:
+            claimName: ebs-io1-claim
 ---
 apiVersion: extensions/v1beta1
 kind: PodSecurityPolicy
