@@ -111,7 +111,7 @@ Suggestions:
 
 * Docs: https://github.com/kubernetes/kops/tree/master/docs
 
-Clean: ```kops delete cluster useast1.demo.magestore.com --yes```
+Clean: ```kops delete cluster useast1.demo.magestore.com --state='s3://clusters.demo.magestore.com' --yes```
 
 # 3. Operations
 
