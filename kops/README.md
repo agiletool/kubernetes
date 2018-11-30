@@ -57,6 +57,7 @@ kops create cluster useast1.demo.magestore.com \
   --state "s3://clusters.demo.magestore.com" \
   --node-count 1 \
   --zones us-east-1f \
+  --vpc vpc-a7223ede \
   --node-size m4.large \
   --master-size m4.large \
   --master-zones us-east-1f \
