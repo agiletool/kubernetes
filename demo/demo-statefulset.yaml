@@ -1,0 +1,91 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-nginx
+  annotations:
+    #nginx.ingress.kubernetes.io/auth-url: "URL to the authentication service"
+    #nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    #nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    #kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/upstream-hash-by: "$realip_remote_addr"
+    nginx.ingress.kubernetes.io/connection-proxy-header: "keep-alive"
+spec:
+  tls:
+  - hosts:
+    - demo-pos.magestore.com
+    secretName: comodo-secret
+  rules:
+  - host: demo-pos.magestore.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: demo-pos-mvp
+          servicePort: 80
+  #- http:
+  #    paths:
+  #    - backend:
+  #        serviceName: demo-pos-mvp
+  #        servicePort: 80
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: demo-pos-mvp
+spec:
+  selector:
+    app: demo-pos-mvp
+  type: NodePort
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 80
+  - name: https
+    protocol: TCP
+    port: 443
+    targetPort: 443
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: demo-pos-mvp
+spec:
+  selector:
+    matchLabels:
+      app: demo-pos-mvp # has to match .spec.template.metadata.labels
+  serviceName: "demo-pos-mvp"
+  replicas: 4 # by default is 1
+  updateStrategy:
+    type: "RollingUpdate"
+  template:
+    metadata:
+      labels:
+        app: demo-pos-mvp # has to match .spec.selector.matchLabels
+    spec:
+      shareProcessNamespace: false
+      terminationGracePeriodSeconds: 10
+      restartPolicy: Always
+      hostAliases:
+      - ip: "172.31.106.149"
+        hostnames:
+        - "db"
+      containers:
+      - name: c226-mvp
+        image: magestore/apache-php:7.1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        - containerPort: 443
+        volumeMounts:
+        - name: demo-data
+          mountPath: /var/www/html
+          subPath: magento_c226_mvp
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "chown -R ubuntu:ubuntu /var/www/html"]
+      volumes:
+      - name: demo-data
+        persistentVolumeClaim:
+          claimName: demo-nfs
