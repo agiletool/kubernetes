@@ -118,3 +118,6 @@ Clean: ```kops delete cluster useast1.demo.magestore.com --state='s3://clusters.
 ## Deploy app
 
 
+# 4. Other:
+
+- http://blog.arungupta.me/stateful-containers-kubernetes-amazon-ebs/
