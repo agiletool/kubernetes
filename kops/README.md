@@ -58,6 +58,7 @@ kops create cluster useast1.demo.magestore.com \
   --node-count 1 \
   --zones us-east-1f \
   --vpc vpc-a7223ede \
+  --subnets 172.31.32.0/19 \
   --node-size m4.large \
   --master-size m4.large \
   --master-zones us-east-1f \
