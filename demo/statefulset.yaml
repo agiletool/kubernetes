@@ -67,7 +67,7 @@ spec:
       terminationGracePeriodSeconds: 10
       restartPolicy: Always
       hostAliases:
-      - ip: "18.204.227.149"
+      - ip: "172.31.106.149"
         hostnames:
         - "db"
       containers:
