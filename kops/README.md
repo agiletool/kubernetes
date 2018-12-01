@@ -58,7 +58,7 @@ kops create cluster useast1.demo.magestore.com \
   --node-count 1 \
   --zones us-east-1f \
   --vpc vpc-a7223ede \
-  --subnets 172.31.32.0/19 \
+  --subnets subnet-ea8818e5 \
   --node-size m4.large \
   --master-size m4.large \
   --master-zones us-east-1f \
@@ -66,6 +66,8 @@ kops create cluster useast1.demo.magestore.com \
   --node-volume-size 10 \
   --yes
 ```
+
+Note: ```--subnets``` must created in AWS PVC
 
 Note: [edit guide](https://github.com/kubernetes/kops/blob/master/docs/cli/kops_edit_cluster.md) if needed
 Use ```kops edit instancegroup nodes --name useast1.demo.magestore.com``` to edit node-count, etc
