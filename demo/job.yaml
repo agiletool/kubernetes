@@ -3,11 +3,11 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: job-init-magento
+  name: init-magento
 spec:
   template:
     metadata:
-      name: init-magento
+      name: job-init-magento
     spec:
       containers:
       - name: magento
