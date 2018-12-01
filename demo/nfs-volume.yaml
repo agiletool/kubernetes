@@ -9,7 +9,7 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storage: 30Gi
+      storage: 20Gi
 ---
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
