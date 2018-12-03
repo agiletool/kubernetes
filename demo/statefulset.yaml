@@ -150,7 +150,13 @@ spec:
         lifecycle:
           postStart:
             exec:
-              command: ["/bin/sh", "-c", "chown -R ubuntu:ubuntu /var/www/aus /var/www/src"]
+              command:
+              - "sh"
+              - "-c"
+              - >
+                mkdir -p /var/www/work;
+                chown -R ubuntu:ubuntu /var/www/aus /var/www/src /var/www/work;
+                mount -t overlay overlay -o lowerdir=./src,workdir=./work,upperdir=./aus ./html
       volumes:
       - name: demo-data
         persistentVolumeClaim:
