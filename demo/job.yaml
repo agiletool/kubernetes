@@ -10,7 +10,7 @@ spec:
       name: job-init-magento
     spec:
       containers:
-      #- name: magento-2.2.6-mvp
+      #- name: magento-c226-mvp
       #  image: magestore/magento:2.2.6-mvp
       #  command: ["cp"]
       #  args: ["-rpf", "/var/www/html/.", "/data/"]
@@ -18,7 +18,7 @@ spec:
       #  - name: demo-data
       #    mountPath: "/data"
       #    subPath: magento_c226_mvp
-      - name: magento-2.2.6-aus
+      - name: magento-c226-aus
         image: magestore/magento:2.2.6-aus
         command: ["cp"]
         args: ["-rpf", "/var/www/html/.", "/data/"]
@@ -26,7 +26,7 @@ spec:
         - name: demo-data
           mountPath: "/data"
           subPath: magento_c226_aus
-      - name: magento-2.2.6-omc
+      - name: magento-c226-omc
         image: magestore/magento:2.2.6-omc
         command: ["cp"]
         args: ["-rpf", "/var/www/html/.", "/data/"]
@@ -34,7 +34,7 @@ spec:
         - name: demo-data
           mountPath: "/data"
           subPath: magento_c226_omc
-      - name: magento-2.2.6
+      - name: magento-c226
         image: magestore/magento:2.2.6
         command: ["cp"]
         args: ["-rpf", "/var/www/html/.", "/data/"]
