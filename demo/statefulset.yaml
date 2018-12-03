@@ -131,7 +131,7 @@ spec:
   template:
     metadata:
       labels:
-        app: demo-pos-mvp # has to match .spec.selector.matchLabels
+        app: demo-pos-aus # has to match .spec.selector.matchLabels
     spec:
       shareProcessNamespace: false
       terminationGracePeriodSeconds: 10
