@@ -28,8 +28,6 @@ spec:
       #    subPath: magento_c226_mvp
       - name: magento-c226-aus
         image: magestore/magento:2.2.6-aus
-        #command: ["cp"]
-        #args: ["-rpf", "/var/www/html/.", "/data/"]
         command:
         - "sh"
         - "-c"
@@ -46,8 +44,6 @@ spec:
           subPath: magento_c226_src
       - name: magento-c226-omc
         image: magestore/magento:2.2.6-omc
-        #command: ["cp"]
-        #args: ["-rpf", "/var/www/html/.", "/data/"]
         command:
         - "sh"
         - "c"
