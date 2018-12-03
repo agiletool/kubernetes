@@ -32,7 +32,7 @@ spec:
         #args: ["-rpf", "/var/www/html/.", "/data/"]
         command:
         - "sh"
-        - "c"
+        - "-c"
         - >
           find /var/www/src/ -type d -print0 | sed 's/\/var\/www\/src\///g' | xargs -I % -0 mkdir -p /var/www/html/% 2>&1 1>/dev/null ;
           find /var/www/src/ -type f -print0 | sed 's/\/var\/www\/src\///g' | xargs -I % -0 ln -sf /var/www/src/% /var/www/html/% 2>&1 1>/dev/null ;
