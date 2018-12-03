@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: magento
-        image: magestore/magento:2.2.6
+        image: magestore/magento:2.2.6-mvp
         command: ["cp"]
         args: ["-rpf", "/var/www/html/.", "/data/"]
         volumeMounts:
