@@ -157,7 +157,7 @@ spec:
         lifecycle:
           postStart:
             exec:
-              command: ["sh", "-c", "chown -R ubuntu:ubuntu /var/www/aus /var/www/src"]
+              command: ["sh", "-c", "chown -R ubuntu:ubuntu /var/www/html /var/www/src"]
       volumes:
       - name: demo-data
         persistentVolumeClaim:
