@@ -163,8 +163,8 @@ spec:
               - >
                 mkdir -p /var/www/aus /var/www/src /var/www/html;
                 chown -R ubuntu:ubuntu /var/www/aus /var/www/src;
-                find /var/www/src/ -type d -print0 | sed 's/\/var\/www\/src\///g' | xargs -I % -0 mkdir -p /var/www/html/% 2>/dev/null ;
-                find /var/www/src/ -type f -print0 | sed 's/\/var\/www\/src\///g' | xargs -I % -0 ln -s /var/www/src/% /var/www/html/% 2>/dev/null
+                find /var/www/src/ -type d -print0 | sed 's/\/var\/www\/src\///g' | xargs -I % -0 mkdir -p /var/www/html/% 2>&1 1>/dev/null ;
+                find /var/www/src/ -type f -print0 | sed 's/\/var\/www\/src\///g' | xargs -I % -0 ln -s /var/www/src/% /var/www/html/% 2>&1 1>/dev/null
       volumes:
       - name: demo-data
         persistentVolumeClaim:
