@@ -24,3 +24,12 @@ Node: add a tag to volume with key ``KubernetesCluster`` value ``<clustername-he
 ```
 kubectl create secret tls custom-tls-cert --key /path/to/tls.key --cert /path/to/tls.crt
 ```
+
+* Create hard link like overlayFS:
+
+```
+find /var/log/ -type d -print0 | sed 's/\/var\/log\///g' | xargs -I % -0 mkdir -p % 2>/dev/null
+find /var/log/ -type f -print0 | sed 's/\/var\/log\///g' | xargs -I % -0 ln -T /var/log/% %
+```
+
+Benefit: Modify or create a new file in destination directory is not create file in target directory, modify the hard link is modify to original file in target
