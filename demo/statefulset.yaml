@@ -161,9 +161,9 @@ spec:
               - "sh"
               - "-c"
               - >
-                mkdir -p /var/www/work;
+                mkdir -p /var/www/aus /var/www/src /var/www/work /var/www/html;
                 chown -R ubuntu:ubuntu /var/www/aus /var/www/src /var/www/work;
-                mount -t overlay overlay -o lowerdir=./src,workdir=./work,upperdir=./aus ./html
+                mount -t overlay overlay -o lowerdir=/var/www/src,workdir=/var/www/work,upperdir=/var/www/aus /var/www/html
       volumes:
       - name: demo-data
         persistentVolumeClaim:
