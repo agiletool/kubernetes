@@ -10,14 +10,14 @@ spec:
       name: job-init-magento
     spec:
       containers:
-      - name: magento-2.2.6-mvp
-        image: magestore/magento:2.2.6-mvp
-        command: ["cp"]
-        args: ["-rpf", "/var/www/html/.", "/data/"]
-        volumeMounts:
-        - name: demo-data
-          mountPath: "/data"
-          subPath: magento_c226_mvp
+      #- name: magento-2.2.6-mvp
+      #  image: magestore/magento:2.2.6-mvp
+      #  command: ["cp"]
+      #  args: ["-rpf", "/var/www/html/.", "/data/"]
+      #  volumeMounts:
+      #  - name: demo-data
+      #    mountPath: "/data"
+      #    subPath: magento_c226_mvp
       - name: magento-2.2.6-aus
         image: magestore/magento:2.2.6-aus
         command: ["cp"]
