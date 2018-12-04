@@ -55,3 +55,22 @@ spec:
     protocol: TCP
     port: 443
     targetPort: 443
+---
+# aus.demo site
+kind: Service
+apiVersion: v1
+metadata:
+  name: demo-pos-aus
+spec:
+  selector:
+    app: demo-pos-aus
+  type: NodePort
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 80
+  - name: https
+    protocol: TCP
+    port: 443
+    targetPort: 443
