@@ -152,7 +152,7 @@ spec:
   image: kope.io/k8s-1.10-debian-jessie-amd64-hvm-ebs-2018-08-17
   machineType: m4.large
   maxSize: 5
-  minSize: 5
+  minSize: 1
   nodeLabels:
     kops.k8s.io/instancegroup: nodes
   role: Node
