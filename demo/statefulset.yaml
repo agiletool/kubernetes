@@ -79,13 +79,26 @@ spec:
         - name: demo-data
           mountPath: /var/www/html
           subPath: magento_c226_aus
-        - name: demo-data
-          mountPath: /var/www/src
-          subPath: magento_c226_src
         lifecycle:
           postStart:
             exec:
-              command: ["sh", "-c", "chown -R ubuntu:ubuntu /var/www/html /var/www/src"]
+              command: ["sh", "-c", "chown -R ubuntu:ubuntu /var/www/html"]
+      - name: c226-aus-init
+        image: magestore/magento:2.2.6-aus
+        imagePullPolicy: Always
+        volumeMounts:
+        - name: demo-data
+          mountPath: /var/www/aus
+          subPath: magento_c226_aus
+        lifecycle:
+          postStart:
+            exec:
+              command:
+              - "sh"
+              - "-c"
+              - >
+                cp -dRf /var/www/html/. /var/www/aus/ ;
+                chown -R ubuntu:ubuntu /var/www/aus ;
       volumes:
       - name: demo-data
         persistentVolumeClaim:
