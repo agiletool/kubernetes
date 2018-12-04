@@ -27,7 +27,13 @@ kubectl create -f demo/aws-ingress.yaml -f demo/nfs-volume.yaml -f demo/secret.y
 wait for complete and run:
 
 ```
-kubectl create -f demo/jobs.yaml
+kubectl create -f demo/jobs-1.yaml
+```
+
+wait for complete and run:
+
+```
+kubectl create -f demo/jobs-2.yaml
 ```
 
 wait for complete and run:
