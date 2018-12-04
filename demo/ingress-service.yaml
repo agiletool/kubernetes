@@ -25,12 +25,12 @@ spec:
         backend:
           serviceName: demo-pos-mvp
           servicePort: 80
-  - host: aus.demo-pos.magestore.com
+  - host: aus-demo-pos.magestore.com
     http:
       paths:
       - path: /
         backend:
-          serviceName: demo-pos-aus
+          serviceName: comodo-secret
           servicePort: 80
   #- http:
   #    paths:
