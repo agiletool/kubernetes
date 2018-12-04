@@ -90,15 +90,17 @@ spec:
         - name: demo-data
           mountPath: /var/www/aus
           subPath: magento_c226_aus
-        lifecycle:
-          postStart:
-            exec:
-              command:
-              - "sh"
-              - "-c"
-              - >
-                cp -dRf /var/www/html/. /var/www/aus/ ;
-                chown -R ubuntu:ubuntu /var/www/aus ;
+        command:
+        - "sh"
+        - "-c"
+        - >
+          cp -dRf /var/www/html/. /var/www/aus/ ;
+          chown -R ubuntu:ubuntu /var/www/aus ;
+        #lifecycle:
+        #  postStart:
+        #    exec:
+        #      command:
+              
       volumes:
       - name: demo-data
         persistentVolumeClaim:
