@@ -100,7 +100,7 @@ spec:
         #  postStart:
         #    exec:
         #      command:
-              
+        
       volumes:
       - name: demo-data
         persistentVolumeClaim:
