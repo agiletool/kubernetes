@@ -7,4 +7,4 @@ RUN adduser -D -u 1000 ubuntu
 
 ADD . /var/www/html
 
-CMD ["/bin/sh"]
+CMD ["/bin/sh", "-c", "while true; do echo 1; sleep 1; done"]
