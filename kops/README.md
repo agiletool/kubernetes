@@ -67,6 +67,100 @@ kops create cluster useast1.demo.magestore.com \
   --yes
 ```
 
+Optional: create cluster by yaml config
+
+```
+apiVersion: kops/v1alpha2
+kind: Cluster
+metadata:
+  creationTimestamp: null
+  name: useast1.demo.magestore.com
+spec:
+  api:
+    dns: {}
+  authorization:
+    rbac: {}
+  channel: stable
+  cloudProvider: aws
+  configBase: s3://clusters.demo.magestore.com/useast2.demo.magestore.com
+  etcdClusters:
+  - etcdMembers:
+    - instanceGroup: master-us-east-1f
+      name: f
+    name: main
+  - etcdMembers:
+    - instanceGroup: master-us-east-1f
+      name: f
+    name: events
+  iam:
+    allowContainerRegistry: true
+    legacy: false
+  kubernetesApiAccess:
+  - 0.0.0.0/0
+  kubernetesVersion: 1.10.6
+  masterPublicName: api.useast1.demo.magestore.com
+  networkCIDR: 172.31.0.0/16
+  networkID: vpc-a7223ede
+  networking:
+    kubenet: {}
+  nonMasqueradeCIDR: 100.64.0.0/10
+  sshAccess:
+  - 0.0.0.0/0
+  subnets:
+  - cidr: 172.31.96.0/20
+    id: subnet-ea8818e5
+    name: us-east-1f
+    type: Public
+    zone: us-east-1f
+  topology:
+    dns:
+      type: Public
+    masters: public
+    nodes: public
+
+---
+
+apiVersion: kops/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: useast1.demo.magestore.com
+  name: master-us-east-1f
+spec:
+  image: kope.io/k8s-1.10-debian-jessie-amd64-hvm-ebs-2018-08-17
+  machineType: m4.large
+  maxSize: 1
+  minSize: 1
+  nodeLabels:
+    kops.k8s.io/instancegroup: master-us-east-1f
+  role: Master
+  rootVolumeSize: 20
+  subnets:
+  - us-east-1f
+
+---
+
+apiVersion: kops/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: useast1.demo.magestore.com
+  name: nodes
+spec:
+  image: kope.io/k8s-1.10-debian-jessie-amd64-hvm-ebs-2018-08-17
+  machineType: m4.large
+  maxSize: 5
+  minSize: 5
+  nodeLabels:
+    kops.k8s.io/instancegroup: nodes
+  role: Node
+  rootVolumeSize: 20
+  subnets:
+  - us-east-1f
+```
+
 Note: ```--subnets``` must created in AWS PVC
 
 Note: [edit guide](https://github.com/kubernetes/kops/blob/master/docs/cli/kops_edit_cluster.md) if needed
