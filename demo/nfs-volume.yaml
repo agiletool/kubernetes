@@ -104,7 +104,7 @@ spec:
         - name: ebs-volume
           # This AWS EBS volume must already exist.
           awsElasticBlockStore:
-            volumeID: vol-0e5666acc2b3ba497
+            volumeID: vol-0b23167ebe94dfec2
             fsType: ext4
 #---
 #kind: StorageClass
