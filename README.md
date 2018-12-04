@@ -13,5 +13,25 @@ kpos ' -- Install & create EC2 clusters to run kubernetes with auto scaling and 
      |
      |
     \|/
-controllers(pod, statefulset)  -- Run all containers created as servers (web services, api, etc...)
+demo(pod, statefulset)  -- Run all containers created as servers (web services, api, etc...)
+```
+
+# Run
+
+After create cluster complete run following command
+
+```
+kubectl create -f demo/aws-ingress.yaml -f demo/nfs-volume.yaml -f demo/secret.yaml -f demo/ingress-service.yaml
+```
+
+and wait for complete
+
+```
+kubectl create -f demo/jobs.yaml
+```
+
+and wait for complete
+
+```
+kubectl create -f demo/statefulset.yaml
 ```
