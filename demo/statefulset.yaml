@@ -51,7 +51,7 @@ spec:
     matchLabels:
       app: demo-pos-aus # has to match .spec.template.metadata.labels
   serviceName: "demo-pos-aus"
-  replicas: 1 # by default is 1
+  replicas: 4 # by default is 1
   updateStrategy:
     type: "RollingUpdate"
   template:
@@ -99,11 +99,68 @@ spec:
               - >
                 cp -dRf /var/www/html/. /var/www/aus/ ;
                 chown -R ubuntu:ubuntu /var/www/aus ;
-        #lifecycle:
-        #  postStart:
-        #    exec:
-        #      command:
-        
+      volumes:
+      - name: demo-data
+        persistentVolumeClaim:
+          claimName: demo-nfs
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: demo-pos-omc
+spec:
+  selector:
+    matchLabels:
+      app: demo-pos-omc # has to match .spec.template.metadata.labels
+  serviceName: "demo-pos-omc"
+  replicas: 1 # by default is 1
+  updateStrategy:
+    type: "RollingUpdate"
+  template:
+    metadata:
+      labels:
+        app: demo-pos-omc # has to match .spec.selector.matchLabels
+    spec:
+      shareProcessNamespace: false
+      terminationGracePeriodSeconds: 10
+      restartPolicy: Always
+      hostAliases:
+      - ip: "172.31.106.149"
+        hostnames:
+        - "db"
+      containers:
+      - name: c226-omc
+        image: magestore/apache-php:7.1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        - containerPort: 443
+        securityContext:
+          allowPrivilegeEscalation: true
+        volumeMounts:
+        - name: demo-data
+          mountPath: /var/www/html
+          subPath: magento_c226_omc
+        lifecycle:
+          postStart:
+            exec:
+              command: ["sh", "-c", "chown -R ubuntu:ubuntu /var/www/html"]
+      - name: c226-omc-init
+        image: magestore/magento:2.2.6-omc
+        imagePullPolicy: Always
+        volumeMounts:
+        - name: demo-data
+          mountPath: /var/www/omc
+          subPath: magento_c226_omc
+        lifecycle:
+          postStart:
+            exec:
+              command:
+              - "sh"
+              - "-c"
+              - >
+                cp -dRf /var/www/html/. /var/www/omc/ ;
+                chown -R ubuntu:ubuntu /var/www/omc ;
       volumes:
       - name: demo-data
         persistentVolumeClaim:
