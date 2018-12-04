@@ -46,7 +46,7 @@ spec:
         image: magestore/magento:2.2.6-omc
         command:
         - "sh"
-        - "c"
+        - "-c"
         - >
           cp -dRf /var/www/src/. /var/www/omc/ ;
           cp -dRf /var/www/html/. /var/www/omc/ ;
