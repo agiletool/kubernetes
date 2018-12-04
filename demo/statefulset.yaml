@@ -73,6 +73,8 @@ spec:
         ports:
         - containerPort: 80
         - containerPort: 443
+        securityContext:
+          allowPrivilegeEscalation: true
         volumeMounts:
         - name: demo-data
           mountPath: /var/www/html
