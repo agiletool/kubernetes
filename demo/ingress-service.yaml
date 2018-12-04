@@ -15,8 +15,8 @@ spec:
     - demo-pos.magestore.com
     secretName: comodo-secret
   - hosts:
-    - aus.demo-pos.magestore.com
-    secretName: star-demo-pos
+    - aus-demo-pos.magestore.com
+    secretName: comodo-secret
   rules:
   - host: demo-pos.magestore.com
     http:
@@ -30,7 +30,7 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: comodo-secret
+          serviceName: demo-pos-aus
           servicePort: 80
   #- http:
   #    paths:
