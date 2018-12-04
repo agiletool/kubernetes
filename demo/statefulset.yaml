@@ -90,6 +90,7 @@ spec:
         - name: demo-data
           mountPath: /var/www/aus
           subPath: magento_c226_aus
+        command: ["sh", "-c", "while true; do echo 1; sleep 1; done"]
         lifecycle:
           postStart:
             exec:
@@ -152,6 +153,7 @@ spec:
         - name: demo-data
           mountPath: /var/www/omc
           subPath: magento_c226_omc
+        command: ["sh", "-c", "while true; do echo 1; sleep 1; done"]
         lifecycle:
           postStart:
             exec:
