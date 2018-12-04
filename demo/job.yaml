@@ -33,7 +33,7 @@ spec:
         - "-c"
         - >
           find /var/www/src/ -type d -print0 | sed 's/\/var\/www\/src\///g' | xargs -I % -0 mkdir -p /var/www/html/% 2>&1 1>/dev/null ;
-          find /var/www/src/ -type f -print0 | sed 's/\/var\/www\/src\///g' | xargs -I % -0 sh -c "test -f /var/www/html/% || ln -s /var/www/src/% /var/www/html/%" ;
+          find /var/www/src/ -type f -print0 | sed 's/\/var\/www\/src\///g' | xargs -I % -0 sh -c 'test -f "/var/www/html/%" || ln -s "/var/www/src/%" "/var/www/html/%"' ;
           cp -dRf /var/www/html/. /var/www/aus/ ;
         volumeMounts:
         - name: demo-data
@@ -49,7 +49,7 @@ spec:
         - "c"
         - >
           find /var/www/src/ -type d -print0 | sed 's/\/var\/www\/src\///g' | xargs -I % -0 mkdir -p /var/www/html/% 2>&1 1>/dev/null ;
-          find /var/www/src/ -type f -print0 | sed 's/\/var\/www\/src\///g' | xargs -I % -0 sh -c "test -f /var/www/html/% || ln -s /var/www/src/% /var/www/html/%" ;
+          find /var/www/src/ -type f -print0 | sed 's/\/var\/www\/src\///g' | xargs -I % -0 sh -c 'test -f "/var/www/html/%" || ln -s "/var/www/src/%" "/var/www/html/%"' ;
           cp -dRf /var/www/html/. /var/www/omc/ ;
         volumeMounts:
         - name: demo-data
