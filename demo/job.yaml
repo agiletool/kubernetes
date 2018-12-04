@@ -5,6 +5,7 @@ kind: Job
 metadata:
   name: init-magento
 spec:
+  backoffLimit: 1
   template:
     metadata:
       name: job-init-magento
