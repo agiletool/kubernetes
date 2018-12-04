@@ -24,13 +24,13 @@ After create cluster complete run following command
 kubectl create -f demo/aws-ingress.yaml -f demo/nfs-volume.yaml -f demo/secret.yaml -f demo/ingress-service.yaml
 ```
 
-and wait for complete
+wait for complete and run:
 
 ```
 kubectl create -f demo/jobs.yaml
 ```
 
-and wait for complete
+wait for complete and run:
 
 ```
 kubectl create -f demo/statefulset.yaml
