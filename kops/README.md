@@ -67,7 +67,7 @@ kops create cluster useast1.demo.magestore.com \
   --yes
 ```
 
-Optional: create cluster by yaml config (kops get cluster $NAME -o yaml)
+Optional: create cluster by yaml config (kops get cluster $NAME -o yaml), use ``kops create -f FILENAME``
 
 ```
 apiVersion: kops/v1alpha2
