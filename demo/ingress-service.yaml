@@ -16,7 +16,7 @@ spec:
     secretName: comodo-secret
   - hosts:
     - aus.demo-pos.magestore.com
-    secretName: star.demo-pos
+    secretName: star-demo-pos
   rules:
   - host: demo-pos.magestore.com
     http:
