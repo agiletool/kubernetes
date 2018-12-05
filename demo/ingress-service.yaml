@@ -35,6 +35,13 @@ spec:
         backend:
           serviceName: demo-pos-aus
           servicePort: 80
+  - host: aus.demo-pos.magestore.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: demo-pos-aus
+          servicePort: 80
   - host: demo-omc.magestore.com
     http:
       paths:
