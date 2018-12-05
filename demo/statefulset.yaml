@@ -29,6 +29,8 @@ spec:
         ports:
         - containerPort: 80
         - containerPort: 443
+        securityContext:
+          allowPrivilegeEscalation: true
         volumeMounts:
         - name: demo-data
           mountPath: /var/www/html
@@ -36,7 +38,24 @@ spec:
         lifecycle:
           postStart:
             exec:
-              command: ["/bin/sh", "-c", "chown -R ubuntu:ubuntu /var/www/html"]
+              command: ["sh", "-c", "chown -R ubuntu:ubuntu /var/www/html"]
+      - name: c226-mvp-init
+        image: magestore/magento:2.2.6-mvp
+        imagePullPolicy: Always
+        volumeMounts:
+        - name: demo-data
+          mountPath: /var/www/mvp
+          subPath: magento_c226_mvp
+        command: ["sh", "-c", "while true; do echo 1; sleep 1; done"]
+        lifecycle:
+          postStart:
+            exec:
+              command:
+              - "sh"
+              - "-c"
+              - >
+                cp -dRf /var/www/html/. /var/www/mvp/ ;
+                chown -R ubuntu:ubuntu /var/www/mvp ;
       volumes:
       - name: demo-data
         persistentVolumeClaim:
