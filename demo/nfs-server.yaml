@@ -39,7 +39,7 @@ spec:
         securityContext:
           privileged: true
         volumeMounts:
-          - mountPath: /exports
+          - mountPath: /export
             name: ebs-volume
       volumes:
         - name: ebs-volume
