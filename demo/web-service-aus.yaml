@@ -51,11 +51,11 @@ metadata:
 spec:
   replicas: 1
   selector:
-    role: nfs-server # has to match .spec.template.metadata.labels
+    role: demo-pos-aus-init # has to match .spec.template.metadata.labels
   template:
     metadata:
       labels:
-        role: nfs-server # has to match .spec.selector.matchLabels
+        role: demo-pos-aus-init # has to match .spec.selector.matchLabels
     spec:
       restartPolicy: Always
       containers:
