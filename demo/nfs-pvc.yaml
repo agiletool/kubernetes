@@ -9,7 +9,7 @@ spec:
     - ReadWriteMany
   nfs:
     # FIXME: use the right IP
-    server: nfs-server
+    server: 100.64.10.70
     path: "/"
 ---
 apiVersion: v1
