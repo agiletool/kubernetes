@@ -35,10 +35,10 @@ spec:
         - name: demo-data
           mountPath: /var/www/html
           subPath: magento_c226_aus
-        lifecycle:
-          postStart:
-            exec:
-              command: ["sh", "-c", "chown -R 1000:1000 /var/www/html/var"]
+        #lifecycle:
+        #  postStart:
+        #    exec:
+        #      command: ["sh", "-c", "chown -R 1000:1000 /var/www/html/var"]
       volumes:
       - name: demo-data
         persistentVolumeClaim:
