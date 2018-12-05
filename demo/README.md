@@ -33,3 +33,8 @@ find /var/log/ -type f -print0 | sed 's/\/var\/log\///g' | xargs -I % -0 ln -T /
 ```
 
 Benefit: Modify or create a new file in destination directory is not create file in target directory, modify the hard link is modify to original file in target
+
+* Force delete pod
+
+``kubectl delete pod NAME --grace-period=0 --force``
+
