@@ -35,10 +35,10 @@ spec:
         - name: demo-data
           mountPath: /var/www/html
           subPath: magento_c226_mvp
-        lifecycle:
-          postStart:
-            exec:
-              command: ["sh", "-c", "chown -R 1000:1000 /var/www/html"]
+        #lifecycle:
+        #  postStart:
+        #    exec:
+        #      command: ["sh", "-c", "chown -R 1000:1000 /var/www/html/var"]
       volumes:
       - name: demo-data
         persistentVolumeClaim:
@@ -74,8 +74,8 @@ spec:
               - "sh"
               - "-c"
               - >
+                chown -R 1000:1000 /var/www/html ;
                 cp -dRf /var/www/html/. /var/www/mvp/ ;
-                chown -R 1000:1000 /var/www/mvp ;
       volumes:
       - name: demo-data
         persistentVolumeClaim:
