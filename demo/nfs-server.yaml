@@ -10,6 +10,9 @@ spec:
       port: 20048
     - name: rpcbind
       port: 111
+    - name: rpcbind-udp
+      port: 111
+      protocol: UDP
   selector:
     role: nfs-server
 ---
