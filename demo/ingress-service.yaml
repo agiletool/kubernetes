@@ -13,16 +13,12 @@ spec:
   tls:
   - hosts:
     - demo-pos.magestore.com
-    secretName: comodo-secret
-  - hosts:
     - aus-demo-pos.magestore.com
+    - demo-omc.magestore.com
     secretName: comodo-secret
   - hosts:
     - aus.demo-pos.magestore.com
     secretName: aus-demo-pos
-  - hosts:
-    - demo-omc.magestore.com
-    secretName: comodo-secret
   rules:
   - host: demo-pos.magestore.com
     http:
