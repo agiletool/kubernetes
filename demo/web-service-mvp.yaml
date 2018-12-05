@@ -39,6 +39,26 @@ spec:
           postStart:
             exec:
               command: ["sh", "-c", "chown -R ubuntu:ubuntu /var/www/html"]
+      volumes:
+      - name: demo-data
+        persistentVolumeClaim:
+          claimName: demo-nfs
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: demo-pos-mvp-init
+spec:
+  replicas: 1
+  selector:
+    role: demo-pos-mvp-init # has to match .spec.template.metadata.labels
+  template:
+    metadata:
+      labels:
+        role: demo-pos-mvp-init # has to match .spec.selector.matchLabels
+    spec:
+      restartPolicy: Always
+      containers:
       - name: c226-mvp-init
         image: magestore/magento:2.2.6-mvp
         imagePullPolicy: Always
