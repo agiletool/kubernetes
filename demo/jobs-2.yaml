@@ -17,6 +17,7 @@ spec:
         - >
           cp -dRf /var/www/src/. /var/www/mvp/ ;
           cp -dRf /var/www/html/. /var/www/mvp/ ;
+          chown -R 1000:1000 /var/www/mvp ;
         volumeMounts:
         - name: demo-data
           mountPath: "/var/www/mvp"
@@ -49,6 +50,7 @@ spec:
         - >
           cp -dRf /var/www/src/. /var/www/aus/ ;
           cp -dRf /var/www/html/. /var/www/aus/ ;
+          chown -R 1000:1000 /var/www/aus ;
         volumeMounts:
         - name: demo-data
           mountPath: "/var/www/aus"
@@ -83,6 +85,7 @@ spec:
         - >
           cp -dRf /var/www/src/. /var/www/omc/ ;
           cp -dRf /var/www/html/. /var/www/omc/ ;
+          chown -R 1000:1000 /var/www/omc ;
         volumeMounts:
         - name: demo-data
           mountPath: "/var/www/omc"
