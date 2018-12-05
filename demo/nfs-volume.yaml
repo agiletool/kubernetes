@@ -53,7 +53,7 @@ spec:
   selector:
     matchLabels:
       app: nfs-provisioner
-  serviceName: "nfs-provisioner"
+  #serviceName: "nfs-provisioner"
   replicas: 1
   template:
     metadata:
