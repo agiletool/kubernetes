@@ -9,7 +9,7 @@ spec:
     - ReadWriteMany
   nfs:
     # FIXME: use the right IP
-    server: nfs-server
+    server: nfs.demo.magestore.com
     path: "/"
 ---
 apiVersion: v1
