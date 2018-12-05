@@ -18,6 +18,9 @@ spec:
     - aus-demo-pos.magestore.com
     secretName: comodo-secret
   - hosts:
+    - aus.demo-pos.magestore.com
+    secretName: star-demo-pos
+  - hosts:
     - demo-omc.magestore.com
     secretName: comodo-secret
   rules:
