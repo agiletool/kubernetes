@@ -38,7 +38,7 @@ spec:
         lifecycle:
           postStart:
             exec:
-              command: ["sh", "-c", "chown -R 1000:1000 /var/www/html"]
+              command: ["sh", "-c", "chown -R 1000:1000 /var/www/html/var"]
       volumes:
       - name: demo-data
         persistentVolumeClaim:
@@ -74,8 +74,9 @@ spec:
               - "sh"
               - "-c"
               - >
+                chown -R 1000:1000 /var/www/html ;
                 cp -dRf /var/www/html/. /var/www/aus/ ;
-                chown -R 1000:1000 /var/www/aus ;
+                
       volumes:
       - name: demo-data
         persistentVolumeClaim:
