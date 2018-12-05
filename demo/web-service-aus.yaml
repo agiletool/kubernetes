@@ -49,8 +49,14 @@ kind: ReplicationController
 metadata:
   name: demo-pos-aus-init
 spec:
+  selector:
+    matchLabels:
+      app: demo-pos-aus-init # has to match .spec.template.metadata.labels
   replicas: 1
   template:
+    metadata:
+      labels:
+        app: demo-pos-aus-init # has to match .spec.selector.matchLabels
     spec:
       restartPolicy: Always
       containers:
