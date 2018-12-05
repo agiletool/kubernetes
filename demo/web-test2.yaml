@@ -1,3 +1,21 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: demo-pos-aus-test
+spec:
+  selector:
+    app: demo-pos-aus-test
+  type: NodePort
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 80
+  - name: https
+    protocol: TCP
+    port: 443
+    targetPort: 443
+---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -6,7 +24,7 @@ spec:
   selector:
     matchLabels:
       app: demo-pos-aus-test # has to match .spec.template.metadata.labels
-  serviceName: "demo-pos-aus"
+  serviceName: "demo-pos-aus-test"
   replicas: 2 # by default is 1
   updateStrategy:
     type: "RollingUpdate"
