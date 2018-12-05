@@ -48,8 +48,6 @@ export KOPS_STATE_STORE="s3://clusters.demo.magestore.com"
 
 ### Build cluster configuration:
 
-```kops create cluster --zones=us-east-1f useast1.demo.magestore.com```
-
 Create cluster with more than options:
 
 ```
