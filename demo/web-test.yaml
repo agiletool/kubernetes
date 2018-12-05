@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: demo-pos-aus
+  name: demo-pos-aus-test
 spec:
   selector:
     matchLabels:
-      app: demo-pos-aus # has to match .spec.template.metadata.labels
+      app: demo-pos-aus-test # has to match .spec.template.metadata.labels
   serviceName: "demo-pos-aus"
   replicas: 2 # by default is 1
   updateStrategy:
@@ -13,7 +13,7 @@ spec:
   template:
     metadata:
       labels:
-        app: demo-pos-aus # has to match .spec.selector.matchLabels
+        app: demo-pos-aus-test # has to match .spec.selector.matchLabels
     spec:
       shareProcessNamespace: false
       terminationGracePeriodSeconds: 10
