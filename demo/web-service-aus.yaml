@@ -39,6 +39,21 @@ spec:
           postStart:
             exec:
               command: ["sh", "-c", "chown -R ubuntu:ubuntu /var/www/html"]
+      volumes:
+      - name: demo-data
+        persistentVolumeClaim:
+          claimName: demo-nfs
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: demo-pos-aus-init
+spec:
+  replicas: 1
+  template:
+    spec:
+      restartPolicy: Always
+      containers:
       - name: c226-aus-init
         image: magestore/magento:2.2.6-aus
         imagePullPolicy: Always
