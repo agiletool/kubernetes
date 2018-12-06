@@ -75,7 +75,7 @@ spec:
               - "-c"
               - >
                 chown -R 1000:1000 /var/www/html ;
-                cp -dRf /var/www/html/. /var/www/aus/ ;
+                cp -rpf /var/www/html/. /var/www/aus/ ;
                 
       volumes:
       - name: demo-data
