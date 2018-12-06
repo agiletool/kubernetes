@@ -17,13 +17,7 @@ status:
   lastScaleTime: <some-time>
   currentReplicas: 2
   desiredReplicas: 2
-  currentMetrics:
-  - type: Resource
-    resource:
-      name: cpu
-      current:
-        averageUtilization: 0
-        averageValue: 0
+
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
@@ -43,13 +37,7 @@ status:
   lastScaleTime: <some-time>
   currentReplicas: 2
   desiredReplicas: 2
-  currentMetrics:
-  - type: Resource
-    resource:
-      name: cpu
-      current:
-        averageUtilization: 0
-        averageValue: 0
+
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
@@ -69,10 +57,3 @@ status:
   lastScaleTime: <some-time>
   currentReplicas: 2
   desiredReplicas: 2
-  currentMetrics:
-  - type: Resource
-    resource:
-      name: cpu
-      current:
-        averageUtilization: 0
-        averageValue: 0
