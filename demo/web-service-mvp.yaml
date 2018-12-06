@@ -75,7 +75,7 @@ spec:
               - "-c"
               - >
                 chown -R 1000:1000 /var/www/html ;
-                cp -dRf /var/www/html/. /var/www/mvp/ ;
+                cp -rpf /var/www/html/. /var/www/mvp/ ;
       volumes:
       - name: demo-data
         persistentVolumeClaim:
