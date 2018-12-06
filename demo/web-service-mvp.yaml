@@ -7,7 +7,7 @@ spec:
     matchLabels:
       app: demo-pos-mvp # has to match .spec.template.metadata.labels
   serviceName: "demo-pos-mvp"
-  replicas: 2 # by default is 1
+  replicas: 3 # by default is 1
   updateStrategy:
     type: "RollingUpdate"
   template:
