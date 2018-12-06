@@ -18,10 +18,10 @@ spec:
       shareProcessNamespace: false
       terminationGracePeriodSeconds: 10
       restartPolicy: Always
-      hostAliases:
-      - ip: "172.31.106.149"
-        hostnames:
-        - "db"
+      #hostAliases:
+      #- ip: "172.31.106.149"
+      #  hostnames:
+      #  - "db"
       containers:
       - name: c226-omc
         image: magestore/apache-php:7.1
@@ -75,7 +75,7 @@ spec:
               - "-c"
               - >
                 chown -R 1000:1000 /var/www/html ;
-                cp -dRf /var/www/html/. /var/www/omc/ ;
+                cp -rpf /var/www/html/. /var/www/omc/ ;
       volumes:
       - name: demo-data
         persistentVolumeClaim:
