@@ -10,7 +10,6 @@ spec:
     name: demo-pos-aus
   minReplicas: 2
   maxReplicas: 10
-  metrics:
   targetCPUUtilizationPercentage: 70
 status:
   observedGeneration: 1
