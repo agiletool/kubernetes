@@ -18,10 +18,10 @@ spec:
       shareProcessNamespace: false
       terminationGracePeriodSeconds: 10
       restartPolicy: Always
-      hostAliases:
-      - ip: "172.31.106.149"
-        hostnames:
-        - "db"
+      #hostAliases:
+      #- ip: "172.31.106.149"
+      #  hostnames:
+      #  - "db"
       containers:
       - name: c226-mvp
         image: magestore/apache-php:7.1
